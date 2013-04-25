@@ -1,55 +1,53 @@
-<?php
+<? php
 
-function add_post($title, $contents, $category){
-    
-    
-}
+	function add_post($title, $contents, $category){
 
-function edit_post($id, $title, $contents, $category){
-    
-}
+	}
 
-function add_category($name){
-    $name = mysql_real_escape_string($name);
-    
-    mysql_query("INSERT INTO `categories` SET `name` = '{$name}'");
-}
+	function edit_post($id, $title, $contents, $category){
 
-function delete($field, $id){
-    
-}
+	}
 
-function get_posts($id = null, $cat_id = null){
-    
-}
+	function add_category($name){
 
-function get_categories($id = null){
-    $categories = array();
-    
-    $query = mysql_query('SELECT `id`, `name` FROM `categories`");
-    
-    while ( $row = mysql_fetch_assoc($query) ) {
-    
-        $categories = $row;
-        
-}
+		$name = mysql_real_escape_string($name);
 
-return $categories;
+		mysql_query("INSERT INTO `categories` SET `name` = '{$name}'");
 
-    
-}
+	}
+
+	function delete($table, $id){
+		$table = mysql_real_escape_string($table);
+		$id 	=(int) $id;
+
+		mysql_query("DELETE FROM `{$table}` WHERE `id` = {$id}");
 
 
+	}
 
-function category_exists($name){
-    $name = mysql_real_escape_string($name);
+	function get_posts($id = null, $cat_id = null){
 
-    $query = mysql_query("SELECT COUNT(1) FROM `categories` WHERE `name` = '{$name}'"); 
-    
-    echo mysql_error();
-    
-    
-}   return ( mysql_result($query, 0) == '0' ) ? false : true;
+	}
 
+	function get_categories($id = null){
 
-?>
+		$categories = array();
+
+		$query = mysql_query("SELECT `id`, `name` FROM `categories`");
+
+		while ( $row = mysql_fetch_assoc($query) ){
+			$categories[] = $row;
+		}
+			return $categories;
+	}
+
+	function category_exists($field, $value){
+			$field = mysql_real_escape_string($field);
+			$value = mysql_real_escape_string($value);
+
+			$query = mysql_query("SELECT COUNT(1) FROM `categories` WHERE `name` = '{$name}'");
+
+			echo mysql_error();
+
+			return ( mysql_result($query, 0) == '0') ? false : true;
+	}
