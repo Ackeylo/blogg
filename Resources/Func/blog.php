@@ -2,7 +2,7 @@
 
 	function add_post($title, $contents, $category){
 
-	}
+        }
 
 	function edit_post($id, $title, $contents, $category){
 

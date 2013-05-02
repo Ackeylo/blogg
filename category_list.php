@@ -15,7 +15,11 @@
         foreach ( get_categories() as $category) {
          ?>
 
-    <p><a href="category.php"?id=<?php echo $category['id']; ?><?php echo $category['name']; ?></a> - <a href='delete_category.php?id=<?php echo $category['id']; ?>'>Delete</a></p>
+    <p><a href="category.php?id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a> -
+        <a href="delete_category.php?id=<?php echo $category['id']; ?>">Delete</a></p>
+    
+    <?php
+    
         }
         
         ?>

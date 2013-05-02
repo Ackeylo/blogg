@@ -27,7 +27,7 @@ if ( empty($errors) ){
 	add_post();
 }
 
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +68,7 @@ if ( isset($errors) && ! empty($errors) ){
 				<?php
 				foreach ( get_categories() as $category) {
 					?>
-					<option value"<?php echo $category['id']; ?>"> <?php echo $category['name']; ?> </option>
+					<option value <?php echo $category['id']; ?>> <?php echo $category['name']; ?> </option>
 					<?php
 				}
 				?>

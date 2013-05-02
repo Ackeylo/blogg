@@ -6,10 +6,13 @@ if ( isset($_POST['name']) ){
     $name = trim($_POST['name']);
 
 
-    if( empty('name', $name)) {
+    if (empty( $name)) {
         $error = "You must submit a category name.";
     }else if ( category_exists($name)) {
         $error = 'That category already exists.';
+        
+}else if (strlen($name) > 24)  {
+    $error = "Category names can only use up to 24 characters.";
 }
 
 if ( ! isset($error) ){
