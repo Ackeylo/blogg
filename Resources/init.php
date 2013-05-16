@@ -2,8 +2,8 @@
 
 include_once('config.php');
 
-mysql_connect(DB_HOST, DB_USER, DB_PASS);
-mysql_select_db(DB_NAME);
+mysql_connect('localhost','root', '');
+mysql_select_db('blog');
 
 include_once('resources/func/blog.php');
 ?>

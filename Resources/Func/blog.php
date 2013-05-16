@@ -1,10 +1,26 @@
-<? php
+<?php
 
 	function add_post($title, $contents, $category){
+            $title = mysql_real_escape_string($title);
+            $contents = mysql_real_escape_string($contents);
+            $category = (int) $category;
+            
+            mysql_query("INSERT INTO `posts` SET
+                `cat_id`        = {$category},
+                `title`         = {$title},
+                `contents`      = {$contents},
+                `date_posted`   = NOW()");
+                
+                
+                
+                
 
         }
 
+        
 	function edit_post($id, $title, $contents, $category){
+            
+            
 
 	}
 
@@ -26,6 +42,36 @@
 	}
 
 	function get_posts($id = null, $cat_id = null){
+            
+            $posts = array();
+            
+            $query = "SELECT `posts`.`id` AS `post_id`, `categories`.`id` AS `category_id`,
+                `title`, `contents`, `date_posted`, `categories`, `name`
+                FROM `posts`
+                INNER JOIN `categories` ON `categories`.`id`=`posts`.`cat_id`";
+            
+            if ( isset($id) ){
+                $id = (int) $id;
+                $query .= "WHERE `posts` . `id` = {$id}";
+            }
+            
+            if ( isset($cat_id) ){
+                $cat_id = (int) $cat_id;
+                $query .= "WHERE `cat_id` = {$cat_id} ";
+            }
+            
+           $query .= " ORDER BY posts.id DESC";
+                
+            
+            $query = mysql_query($query);
+            
+            
+            while( $row = mysql_fetch_assoc($query)){
+                $posts[] = $row;
+                
+                
+            }
+            return $posts;
 
 	}
 
@@ -42,10 +88,13 @@
 	}
 
 	function category_exists($field, $value){
-			$field = mysql_real_escape_string($field);
+            
 			$value = mysql_real_escape_string($value);
+                        $field = mysql_real_escape_string($field);
+                        
+                            
 
-			$query = mysql_query("SELECT COUNT(1) FROM `categories` WHERE `name` = '{$name}'");
+                        $query = mysql_query("SELECT COUNT(1) FROM `categories` WHERE `{$field}` = '{$value}'");
 
 			echo mysql_error();
 
