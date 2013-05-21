@@ -1,0 +1,18 @@
+html{height: 75%}
+h1{			font-family: monospace;
+			letter-spacing: 1px;
+			font-size: 25px;		
+}
+
+
+body{background-color: #780000;
+	font-family: monospace;
+	margin: 0 auto;
+	height: 100%;
+}
+
+
+#link a:hover{
+			color: black;
+}
+

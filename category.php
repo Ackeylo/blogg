@@ -16,7 +16,7 @@ $posts = get_posts(null, $_GET['id']);
     ul { list-style-type: none; }
     li { display: inline; margin-right: 20px; }
     </style>
-    <title> My Blog </title>
+    <title> Ackeylo's Blog </title>
 </head>
 
 <body>
