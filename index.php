@@ -55,7 +55,7 @@ $posts = (isset($_GET['id']))? get_posts($_GET['id']) : get_posts();
             
         }
         ?>
-                        <div id="footer">
+                       <div id="footer">
     </div>
     
     </body>
